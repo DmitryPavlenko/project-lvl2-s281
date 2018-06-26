@@ -1,0 +1,49 @@
+{
+  "name": "gendiff-1102",
+  "version": "0.0.1",
+  "description": "Compares two configuration files and shows a difference. Hexlet study project",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "eslint": "eslint",
+    "test": "jest"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitryPavlenko/project-lvl2-s281.git"
+  },
+  "author": "Dmitriy Pavlenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitryPavlenko/project-lvl2-s281/issues"
+  },
+  "homepage": "https://github.com/DmitryPavlenko/project-lvl2-s281#readme",
+  "dependencies": {
+    "commander": "*",
+    "lodash": "*"
+  },
+    "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.4",
+    "babel-plugin-transform-runtime": "*",
+    "babel-polyfill": "^6.0.16",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-stage-0": "^6.24.1",
+    "debug": "^3.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "jest": "^22.4.4",
+    "jest-cli": "^22.4.4"
+  }
+}
