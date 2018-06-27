@@ -1,10 +1,14 @@
 #!/usr/bin/env node
 import _ from 'lodash';
 import fs from 'fs';
+import path from 'path';
+import getParser from './parsers';
 
 const fileToObject = (filePath) => {
   const data = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(data);
+  const extention = path.extname(filePath).toLowerCase();
+  const parse = getParser(extention);
+  return parse(data);
 };
 
 const genDiff = (config1, config2) => {
