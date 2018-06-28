@@ -7,5 +7,10 @@ const parsers = {
   '.yaml': safeLoad,
   '.ini': iniParse,
 };
-
-export default extension => data => parsers[extension](data);
+export default (extension) => {
+  const parser = parsers[extension];
+  if (!parser) {
+    throw new Error(`unkown format: ${extension}`);
+  }
+  return parser;
+};
