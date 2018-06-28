@@ -1,12 +1,12 @@
 {
     common: {
-      - follow: false
         setting1: Value 1
+      - setting4: blah blah
+      - follow: false
       - setting3: {
             key: value
         }
       + setting3: true
-      - setting4: blah blah
       - setting5: {
             key5: value5
         }

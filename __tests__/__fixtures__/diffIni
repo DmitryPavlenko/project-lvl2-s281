@@ -10,8 +10,8 @@
             key: value
           + ops: vops
         }
-      + follow: false
       + setting4: blah blah
+      + follow: false
       + setting5: {
             key5: value5
         }
