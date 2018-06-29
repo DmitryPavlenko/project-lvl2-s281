@@ -34,4 +34,4 @@ const render = (ast = [], depth = 0) => {
   return _.flatten(result).join('\n');
 };
 
-export default render;
+export default ast => `{\n${render(ast)}\n}`;

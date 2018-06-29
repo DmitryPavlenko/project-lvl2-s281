@@ -54,12 +54,12 @@ const buildAST = (object1, object2) => {
   return result;
 };
 
-const genDiff = (config1, config2) => {
+const genDiff = (config1, config2, format = 'standart') => {
   const object1 = fileToObject(config1);
   const object2 = fileToObject(config2);
-  const render = renderers.standart;
+  const render = renderers[format];
   const ast = buildAST(object1, object2);
-  return `{\n${render(ast, 0)}\n}`;
+  return render(ast);
 };
 
 export default genDiff;
