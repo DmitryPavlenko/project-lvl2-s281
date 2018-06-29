@@ -7,6 +7,7 @@ const parsers = {
   '.yaml': safeLoad,
   '.ini': iniParse,
 };
+
 export default (extension) => {
   const parser = parsers[extension];
   if (!parser) {
