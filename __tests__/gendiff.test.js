@@ -43,3 +43,13 @@ test('difference beetwen two incorrect type files', () => {
   }
   expect(badSecondFileFormat).toThrowError(errorMessage);
 });
+
+
+test('PLAIN difference beetwen two JSON files', () => {
+  const configPath1 = fs.realpathSync('__tests__/__fixtures__/before.json');
+  const configPath2 = fs.realpathSync('__tests__/__fixtures__/after.JSON');
+  const diff = fs.readFileSync('__tests__/__fixtures__/plainDiff', 'utf-8');
+  const reverseDiff = fs.readFileSync('__tests__/__fixtures__/plainReverseDiff', 'utf-8');
+  expect(genDiff(configPath1, configPath2, 'plain')).toBe(diff);
+  expect(genDiff(configPath2, configPath1, 'plain')).toBe(reverseDiff);
+});
