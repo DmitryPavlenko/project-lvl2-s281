@@ -53,3 +53,10 @@ test('PLAIN difference beetwen two JSON files', () => {
   expect(genDiff(configPath1, configPath2, 'plain')).toBe(diff);
   expect(genDiff(configPath2, configPath1, 'plain')).toBe(reverseDiff);
 });
+
+test('JSON difference beetwen two YAML files', () => {
+  const configPath1 = fs.realpathSync('__tests__/__fixtures__/before.yaml');
+  const configPath2 = fs.realpathSync('__tests__/__fixtures__/after.YML');
+  const diff = fs.readFileSync('__tests__/__fixtures__/jsonDiff', 'utf-8');
+  expect(genDiff(configPath1, configPath2, 'json')).toBe(diff);
+});
