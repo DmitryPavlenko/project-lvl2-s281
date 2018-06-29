@@ -7,7 +7,7 @@ const renderers = {
   json: JSON.stringify,
 };
 
-export default format => {
+export default (format) => {
   const render = renderers[format];
   if (!render) {
     throw new Error(`unkown format: ${format}`);

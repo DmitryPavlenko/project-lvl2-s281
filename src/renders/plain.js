@@ -12,18 +12,18 @@ const prettify = (name, action, value = '', parentNames = []) => `Property '${[.
 const render = (ast = [], parentNames = []) => {
   const result =
     ast.filter(node => node.type !== 'original')
-       .map((node) => {
-          switch (node.type) {
-            case 'removed':
-              return prettify(node.name, 'removed', '', parentNames);
-            case 'added':
-              return prettify(node.name, 'added', ` with ${stringify(node.newValue, 'value: ')}`, parentNames);
-            case 'nested':
-              return render(node.children, [...parentNames, node.name]);
-            default:
-              return prettify(node.name, 'updated', `. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`, parentNames);
-          }
-        });
+      .map((node) => {
+        switch (node.type) {
+          case 'removed':
+            return prettify(node.name, 'removed', '', parentNames);
+          case 'added':
+            return prettify(node.name, 'added', ` with ${stringify(node.newValue, 'value: ')}`, parentNames);
+          case 'nested':
+            return render(node.children, [...parentNames, node.name]);
+          default:
+            return prettify(node.name, 'updated', `. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`, parentNames);
+        }
+      });
   return result.join('\n');
 };
 
