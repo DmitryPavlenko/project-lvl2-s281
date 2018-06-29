@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import renderers from './renders';
+import getRender from './renders';
 import getParser from './parsers';
 
 const fileToObject = (filePath) => {
@@ -54,10 +54,10 @@ const buildAST = (object1, object2) => {
   return result;
 };
 
-const genDiff = (config1, config2, format = 'standart') => {
+const genDiff = (config1, config2, format = 'embedded') => {
   const object1 = fileToObject(config1);
   const object2 = fileToObject(config2);
-  const render = renderers[format];
+  const render = getRender(format);
   const ast = buildAST(object1, object2);
   return render(ast);
 };

@@ -1,6 +1,5 @@
 import _ from 'lodash';
 
-
 const indent = depth => ' '.repeat(depth * 4);
 
 const stringify = (value, depth) => {
@@ -16,20 +15,19 @@ const prettify = (name, value, depth, sign = ' ') => `${indent(depth)}  ${sign} 
 
 const render = (ast = [], depth = 0) => {
   const result = ast.map((node) => {
-    if (node.type === 'removed') {
-      return prettify(node.name, node.oldValue, depth, '-');
+    switch (node.type) {
+      case 'removed':
+        return prettify(node.name, node.oldValue, depth, '-');
+      case 'added':
+        return prettify(node.name, node.newValue, depth, '+');
+      case 'changed':
+        return [prettify(node.name, node.oldValue, depth, '-'),
+          prettify(node.name, node.newValue, depth, '+')];
+      case 'nested':
+        return `${indent(depth + 1)}${node.name}: {\n${render(node.children, depth + 1)}\n${indent(depth + 1)}}`;
+      default:
+        return prettify(node.name, node.oldValue, depth);
     }
-    if (node.type === 'added') {
-      return prettify(node.name, node.newValue, depth, '+');
-    }
-    if (node.type === 'changed') {
-      return [prettify(node.name, node.oldValue, depth, '-'),
-        prettify(node.name, node.newValue, depth, '+')];
-    }
-    if (node.type === 'nested') {
-      return `${indent(depth + 1)}${node.name}: {\n${render(node.children, depth + 1)}\n${indent(depth + 1)}}`;
-    }
-    return prettify(node.name, node.oldValue, depth);
   });
   return _.flatten(result).join('\n');
 };
