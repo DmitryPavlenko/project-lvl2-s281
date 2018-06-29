@@ -4,4 +4,5 @@ import plain from './plain';
 export default {
   standart,
   plain,
+  json: JSON.stringify,
 };
