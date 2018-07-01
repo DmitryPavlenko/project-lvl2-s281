@@ -1,6 +1,6 @@
 {
   "name": "gendiff-1102",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "Compares two configuration files and shows a difference. Hexlet study project",
   "main": "index.js",
   "bin": {
