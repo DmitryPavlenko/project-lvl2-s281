@@ -3,12 +3,12 @@ import _ from 'lodash';
 const indent = depth => ' '.repeat(depth * 4);
 
 const stringify = (value, depth) => {
-  if (value instanceof Object) {
-    const keys = _.keys(value);
-    const result = keys.map(key => `${indent(depth + 2)}${key}: ${value[key]}`);
-    return `{\n${result.join('\n')}\n${indent(depth + 1)}}`;
+  if (!(value instanceof Object)) {
+    return String(value);
   }
-  return String(value);
+  const keys = _.keys(value);
+  const result = keys.map(key => `${indent(depth + 2)}${key}: ${value[key]}`);
+  return `{\n${result.join('\n')}\n${indent(depth + 1)}}`;
 };
 
 const prettify = (name, value, depth, sign = ' ') => `${indent(depth)}  ${sign} ${name}: ${stringify(value, depth)}`;

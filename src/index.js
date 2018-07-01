@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
-import getRender from './renders';
+import getRender from './renderers';
 import getParser from './parsers';
 
 const fileToObject = (filePath) => {
